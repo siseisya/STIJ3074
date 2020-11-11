@@ -3,19 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
+
+    <script>
+        function validateForm() {
+
+          var x = document.forms["myForm"]["fname"].value;
+          if(x == "") {
+              alert("Name must be filled out");
+              return false;
+          }
+
+          var y = document.forms["myForm"]["femail"].value;
+          if(y == "") {
+              alert("Email must be filled out");
+              return false;
+          }
+
+
+          var z = document.forms["myForm"]["fpass"].value;
+          if(z == "") {
+              alert("Password must be filled out");
+              return false;
+          }
+
+          var z1 = document.forms["myForm"]["frepass"].value;
+          if(z1 == "") {
+              alert("Password does not match");
+              return false;
+          }
+         
+          var w = document.forms["myForm"]["fphone"].value;
+          if(w == "") {
+              alert("Phone number must be filled out");
+              return false;
+          }
+          var v = document.forms["myForm"]["faddress"].value;
+          if(v == "") {
+              alert("Address must be filled out");
+              return false;
+          }
+        }
+        </script>
 </head>
-<h1>Lab test 1</h1>
-<p1>Name: Norfarisha Atina Jefree</p>
-<p2>Email : siseisya@gmail.com</p2><br>
-<p3>Phone : 0123083565</p3><br>
-<p4>Address : No 4, Jalan Indah 1/18 Taman Universiti Indah Seri Kembangan</p4>
-<br></br>
-<p5><label for="pwd">Password:</label>
-    <input type="password" id="pwd" name="pwd"></p5>
+
 <body>
 
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Name: <input type="text" name="fname"   ><br></br>
 
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Email: <input type="text"  name="femail"  
+        pattern = ".+@gmail.com" > <br></br>
+
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+    Password: <input type="password" name = "fpass"  
+    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])"
+    title="Must contain at least one number and one uppercase and lowercase letter" >
+       
+     <script>
+    var myInput = document.getElementById("fpass");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+
+myInput.onfocus = function() {
+    myInput.getElementById("message").style.display = "block"
+}
+
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+
+// Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+}
     
+  </script>
+
+    <br></br>
+
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Reeenter Password: <input type="password"  name="frepass" 
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])" 
+         title="Enter the same password"><br></br>
+       
+
+          
+     <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Phone : <input type="text" name="fphone"  minlength="10" 
+        title="Must contain number" > <br></br>
+  
+         
+                
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Address: <input type="text" name="faddress" ><br></br>
+                    
+                            
+        <input type="submit" value="Submit">
+  
 </body>
 </html>
